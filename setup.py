@@ -16,6 +16,7 @@ setup(
     url='https://github.com/runcode-io/runcode-python',
     description='RunCode Python API',
     long_description=README,
+    long_description_content_type='text/markdown',
     packages=find_packages(exclude=['tests', 'tests.*']),
     include_package_data=True,
     install_requires=[
