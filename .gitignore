@@ -3,3 +3,9 @@
 __pycache__
 db.sqlite3
 .vscode
+*.egg-info/
+.installed.cfg
+*.egg
+build/
+develop-eggs/
+dist/
