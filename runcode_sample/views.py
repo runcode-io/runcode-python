@@ -20,6 +20,7 @@ for i in range(int(start), int(end)):
 """,
         input="1\n10",
         compiler=Runner.python39,
+        extra_params={"ukey": "16"},
     )
 
     return HttpResponse("hi")
@@ -29,3 +30,4 @@ for i in range(int(start), int(end)):
 def test_index(request):
     received_json_data = json.loads(request.body)
     print(received_json_data)
+    return HttpResponse("ok")

@@ -40,12 +40,13 @@ class Runner:
             self.api_key = api_key
             self.callback_url = callback_url
 
-    def execute(self, code, input, compiler):
+    def execute(self, code, input, compiler, extra_params={}):
         """
         Sends code and input to be executed by runcode platform.
         :param code: Code to get executed.
         :param input: input values for the code.
         :compiler: Compiler to use to execute the code.
+        :extra_params: json dict to post extra parameters to identify the response or any other purpose
         Usage::
         >>> runner.execute(
                 code='''
@@ -60,14 +61,14 @@ class Runner:
             )
         """
 
-        headers = {"Content-Type": "application/x-www-form-urlencoded"}
-
         out = {
             "api_key": self.api_key,
             "code": code,
             "input": input,
             "compiler": compiler,
             "callback_url": self.callback_url,
+            "extra_params": extra_params,
         }
 
-        r = requests.post("https://runcode.io/api/run-code/", data=out, headers=headers)
+        r = requests.post("https://app.runcode.io/api/run-code/", json=out)
+        # r = requests.post("http://localhost:8000/api/run-code/", json=out)
